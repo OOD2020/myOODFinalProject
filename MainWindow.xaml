@@ -1,0 +1,255 @@
+﻿<Window x:Class="last_time.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:last_time"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="538.8" Width="816.8" Background="Black" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="739*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="413*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="480" Margin="10,10,-1.4,-70" VerticalAlignment="Top" Width="785" Grid.RowSpan="3" Grid.ColumnSpan="2" BorderBrush="Black">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFC8B123" Offset="0"/>
+                    <GradientStop Color="#FF163A57" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="Main" BorderBrush="{x:Null}" Foreground="Black" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Drink Types" Grid.Row="0" Grid.Column="0" Margin="15,10,15.4,10.6" Width="100" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" />
+                    <Label Content="Drinks" Grid.Row="0" Grid.Column="3" Margin="15.2,10,14.4,10.6" Width="100" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label Content="Cashier" Grid.Row="0" Grid.Column="5" Margin="30,10,15.6,10.6" Width="200" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+                    <Button x:Name="MineralsButton" Grid.Row="1" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="MineralsButton_Click" Grid.ColumnSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Minerals" Width="84" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/diet-coke.jpg" Width="44" HorizontalAlignment="Center" Height="42"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DraughtButton" Grid.Row="2" Margin="0,4.4,2.4,0" Click="DraughtButton_Click" Grid.ColumnSpan="2" Width="130" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Draught" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/draught.jpg" Width="35" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WinesButton" Grid.Row="3" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="WinesButton_Click" Grid.ColumnSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Wines" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/wine.jpg" Width="42" HorizontalAlignment="Center" Height="34"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="TeasAndCoffeeButton" Grid.Row="4" Margin="0,4.4,2.4,0" Click="TeasAndCoffeeButton_Click" Grid.ColumnSpan="2" Width="130" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Teas + Coffees" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/coffee.jpg" Width="30" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Bottled_BeerButton" Grid.Row="5" Margin="0,4.4,2.4,0" Click="Bottled_BeerButton_Click" Grid.ColumnSpan="2" Width="130" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Bottled Beer" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/heineken.jpg" Width="35" HorizontalAlignment="Center" Height="37"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="GinsButton" Grid.Row="6" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="GinsButton_Click" Grid.ColumnSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Gins" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/gin.jpg" Width="33" HorizontalAlignment="Center" Height="37"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="VodkasButton" Grid.Row="7" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="VodkasButton_Click" Grid.ColumnSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Vodkas" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/vodka.jpg" Width="31" HorizontalAlignment="Center" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WhiskeysButton" Grid.Row="7" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="WhiskeysButton_Click" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Whiskeys" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/whiskey.jpg" Width="37" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="ShotsButton" Grid.Row="8" VerticalAlignment="Top" Margin="0,4.4,2.4,0" Height="40" Click="ShotsButton_Click" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Shots" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/shots.jpg" Width="32" HorizontalAlignment="Center" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <ListBox x:Name="lbxSelector" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="2" HorizontalAlignment="Left" Margin="68.6,4.4,0,9.4" Grid.Row="1" Grid.RowSpan="7" Width="262" Grid.ColumnSpan="3" SelectionChanged="lbxSelector_SelectionChanged" FontFamily="Lucida Console" Foreground="Black"/>
+                    <ListBox x:Name="lbxCashier" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="5" HorizontalAlignment="Left" Height="155" Margin="10,4.4,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="3" FontFamily="Lucida Console" Foreground="Black"/>
+                    <Button x:Name="TenEuroCashButton" Grid.Column="5" HorizontalAlignment="Left" Margin="26,0.2,0,0" Grid.Row="6" VerticalAlignment="Top" Width="77" Height="41" Click="TenEuroCashButton_Click">
+                        <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/10euro.jpg" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="76"/>
+                    </Button>
+                    <Button x:Name="TwentyEuroCashButton" Grid.Column="6" HorizontalAlignment="Left" Margin="24.4,0.2,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Height="41" Click="TwentyEuroCashButton_Click">
+                        <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/20euro.jpg" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="76"/>
+                    </Button>
+                    <Button x:Name="FiftyEuroCashButton" Grid.Column="5" HorizontalAlignment="Left" Margin="26,41.2,0,0" Grid.Row="6" VerticalAlignment="Top" Width="77" Height="42" Click="FiftyEuroCashButton_Click" Grid.RowSpan="2">
+                        <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/50euro.jpg" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="82"/>
+                    </Button>
+                    <Button x:Name="CashButton" Grid.Row="6" Grid.Column="6" VerticalAlignment="Top" Margin="24.4,41.2,18.6,0" Height="42" Click="CashButton_Click" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CASH" Width="38" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/coin.jpg" Width="31" HorizontalAlignment="Center" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <TextBlock x:Name="tblkTotal" Grid.Column="6" HorizontalAlignment="Left" Margin="69.2,10,0,8.8" Grid.Row="5" TextWrapping="Wrap" Width="61" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="tblkChangeDue" Grid.Column="6" HorizontalAlignment="Left" Margin="10.4,10.6,0,8.2" Grid.Row="8" TextWrapping="Wrap" Width="102" FontWeight="Bold" FontSize="14"/>
+                    <Button x:Name="RemoveButton" Content="Remove" Grid.Column="5" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="112" Height="31" Click="RemoveButton_Click" Background="#FFFF0303" Foreground="#FFFAFAFA" FontWeight="Bold" MouseRightButtonDown="RemoveAll"/>
+                    <Label Content="Drinks" Grid.Row="0" Grid.Column="3" Margin="15.2,10,14.4,10.6" Width="100" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label Content="Change Due :" Grid.Row="8" Grid.Column="5" Margin="9,6.6,8.6,11.2" Width="112" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="27"/>
+                    <Label Content="Total :" Grid.Row="5" Grid.Column="6" Margin="9.4,10,51.6,7.8" Width="55" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="27"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Login">
+                <Grid Background="#FF318676">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="708*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tbxUser" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="32" Margin="14.8,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217"  Grid.Column="2"/>
+                    <TextBox x:Name="tbxPassword" VerticalContentAlignment="Center" Grid.Column="2" HorizontalAlignment="Left" Height="33" Margin="14.8,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217"/>
+                    <Button x:Name="btnSubmit" Content="Log In" Grid.Column="2" HorizontalAlignment="Left" Margin="14.8,358,0,0" VerticalAlignment="Top" Width="217" Height="38" Click="btnSubmit_Click"/>
+                    <Label Content="Enter Username" Grid.Column="2" HorizontalAlignment="Left" Margin="14.8,163,0,0" VerticalAlignment="Top" Width="99"/>
+                    <Label Content="Enter Password" Grid.Column="2" HorizontalAlignment="Left" Margin="14.8,256,0,0" VerticalAlignment="Top" Width="99"/>
+                    <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/logo.jpg" HorizontalAlignment="Left" Height="111" Margin="61.8,10,0,0" VerticalAlignment="Top" Width="516" Grid.ColumnSpan="2" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add Stock">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF33A522" Offset="0.462"/>
+                            <GradientStop Color="#FFB6216C" Offset="0.917"/>
+                            <GradientStop Color="#FF46A398" Offset="0.316"/>
+                            <GradientStop Color="#FF101010" Offset="0.017"/>
+                            <GradientStop Color="#FF10433D" Offset="0.583"/>
+                            <GradientStop Color="#FF5B2099" Offset="0.688"/>
+                            <GradientStop Color="#FF6E136B" Offset="0.799"/>
+                            <GradientStop Color="#FF2546A2" Offset="0.858"/>
+                            <GradientStop Color="#FF6ABF2D" Offset="0.972"/>
+                            <GradientStop Color="#FF3DD1C1" Offset="0.222"/>
+                            <GradientStop Color="#FFB127DF" Offset="0.75"/>
+                            <GradientStop Color="#FF66297F" Offset="0.135"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Drink Types" Grid.Row="0" Grid.Column="1" Margin="2.6,10,15.4,11.6" Width="100" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" />
+                    <Button x:Name="MineralsButton1" Grid.Row="1" VerticalAlignment="Top" Margin="0,4.4,0.4,0" Height="40" Click="MineralsButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Minerals" Width="84" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/diet-coke.jpg" Width="44" HorizontalAlignment="Center" Height="42"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DraughtButton1" Grid.Row="2" Margin="0,4.8,0.4,0.8" Click="DraughtButton_Click" Grid.ColumnSpan="3" Width="130" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Draught" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/draught.jpg" Width="35" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WinesButton1" Grid.Row="3" VerticalAlignment="Top" Margin="0,4.2,0.4,0" Height="40" Click="WinesButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Wines" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/wine.jpg" Width="42" HorizontalAlignment="Center" Height="34"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="TeasAndCoffeeButto1" Grid.Row="4" Margin="0,4.6,0.4,1" Click="TeasAndCoffeeButton_Click" Grid.ColumnSpan="3" Width="130" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Teas + Coffees" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/coffee.jpg" Width="30" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Bottled_BeerButton1" Grid.Row="5" Margin="0,5,0.4,44.6" Click="Bottled_BeerButton_Click" Grid.ColumnSpan="3" Width="130" Height="40" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Bottled Beer" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/heineken.jpg" Width="35" HorizontalAlignment="Center" Height="37"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="GinsButton1" Grid.Row="6" VerticalAlignment="Top" Margin="0,4.2,0.4,0" Height="40" Click="GinsButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Gins" Width="92" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/gin.jpg" Width="33" HorizontalAlignment="Center" Height="37"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="VodkasButton1" Grid.Row="7" VerticalAlignment="Top" Margin="0,4.4,0.4,0" Height="40" Click="VodkasButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Vodkas" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/vodka.jpg" Width="31" HorizontalAlignment="Center" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WhiskeysButton1" Grid.Row="7" VerticalAlignment="Top" Margin="0,4.4,0.4,0" Height="40" Click="WhiskeysButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Whiskeys" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/whiskey.jpg" Width="37" HorizontalAlignment="Center" Height="35"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="ShotsButton1" Grid.Row="8" VerticalAlignment="Top" Margin="0,4.6,0.4,0" Height="40" Click="ShotsButton_Click" Grid.ColumnSpan="3" Width="130">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Shots" Width="88" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            <Image Source="https://my-programming-project-icons-bucket.s3-eu-west-1.amazonaws.com/shots.jpg" Width="32" HorizontalAlignment="Center" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <Label Content="Drinks" Grid.Row="0" Grid.Column="3" Margin="109.6,10,45.6,11.6" Width="104" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" />
+                    <ListBox x:Name="lbxSelector1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="3" HorizontalAlignment="Left" Margin="63.6,4.4,0,9.4" Grid.Row="1" Grid.RowSpan="7" Width="196" Grid.ColumnSpan="3" SelectionChanged="lbxSelector1_SelectionChanged" FontFamily="Lucida Console" Foreground="Black"/>
+                    <TextBox x:Name="tbxStockQuantity" Grid.Column="5" HorizontalAlignment="Left" Height="40" Margin="24.4,4.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="44" FontSize="20" FontWeight="Bold"/>
+                    <Label Content="Enter Amount" Grid.Row="0" Grid.Column="5" Margin="15,10,15.4,10.6" Width="100" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="1" />
+                    <Button x:Name="btnAddStock" Content="Add Stock" Grid.Column="5" HorizontalAlignment="Left" Margin="24.4,9.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="95" Height="28" Click="btnAddStock_Click" Background="#FF54D719" FontWeight="Bold"/>
+                    <ListBox x:Name="tester" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Left" Height="216" Margin="24.2,10.2,0,0" Grid.Row="4" Grid.RowSpan="5" VerticalAlignment="Top" Width="323"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
