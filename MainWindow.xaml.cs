@@ -24,6 +24,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Entity;
 using System.Globalization;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace last_time
 {
@@ -262,13 +264,13 @@ namespace last_time
                 decimal cost = CalculateTotal();
                 CultureInfo currentCulture = CultureInfo.GetCultureInfo("fr-FR");
                 tblkTotal.Text = string.Format(currentCulture, "{0:C2}", cost);
-            }    
+            }
         }
 
         //cashes off the cashier if cost < €10 || throws an error messag if cost > €10
         private void TenEuroCashButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckStock();
+            CheckStock2();
             decimal cost = CalculateTotal();
             UpdateStock();
             if (cost <= 10 && cost > 0)
@@ -288,66 +290,102 @@ namespace last_time
             }
         }
 
-        private void CheckStock()
+        private void CheckStock2()
         {
-            
-            //check if enough of certain product in stock
-            
-            
-            bool enoughStock = true;
-            foreach (var drink in selectedDrinks)
+            //get distinct list of ids from selected drinks
+            var query = from d in selectedDrinks
+                        select d.Id;
+
+            var selectedIDS = query.ToList().Distinct();
+
+            //get current stock info 
+            var databaseInfo = from s in db.Drinks
+                               select s;
+
+            var stock = databaseInfo.ToList();
+
+            //for each drink id get number of occurences
+            foreach (int i in selectedIDS)
             {
-                using (var db = new DrinksModelContainer())
+                int numberOfDrinksOrdered = selectedDrinks.Where(d => d.Id == i).Count();
+                var stockItem = stock.Where(s => s.Id == i).Select(s => s).FirstOrDefault();
+                int? stockOfDrinkAvailable = stockItem.Stock;
+
+                if (numberOfDrinksOrdered > stockOfDrinkAvailable)
                 {
-                    List<Drinks> tempList = new List<Drinks>();
-                    foreach (var row in selectedDrinks)
-                    {
-                        tempList.Add(row);
-                    }
+                    MessageBox.Show($"Not enough {stockItem.Name}");
 
-                    foreach (var item in tempList)
-                    {
-                        var query = from s in db.Drinks
-                                    where s.Id == item.Id
-                                    select s;
-
-                        int selectedDrinkCount = query.Count();
-                        foreach (Drinks q in query)
-                        {
-                            int internalSelectedDrinksCount = 0;
-                            selectedDrinkCount = selectedDrinkCount + internalSelectedDrinksCount;
-                            if (q.Stock - selectedDrinkCount >= 0 )
-                            {
-                                enoughStock = true;
-                                internalSelectedDrinksCount++;
-
-                            }
-                            else if (q.Stock == null)
-                            {
-                                continue;
-                            }
-                            else if (q.Stock - selectedDrinkCount < 0)
-                            {
-                                enoughStock = false;
-                                break;
-                            }
-                        }
-
-                    }
+                    break;
                 }
+            }
 
-            }
-            if (enoughStock == false)
-            {
-                MessageBox.Show("Not enough stock for this transaction");
-            }
         }
+        #region oldStockMethod
+        //this method would not work properly until stock had already been reduced 
+        //(ie.it would not take into account each time it iterated the check loop that when the selected drink had been approved the stock available for that item would be one less)
+
+        //private void CheckStock()
+        //{
+
+        //    //check if enough of certain product in stock
+
+
+        //    bool enoughStock = true;
+        //    foreach (var drink in selectedDrinks)
+        //    {
+        //        using (var db = new DrinksModelContainer())
+        //        {
+        //            List<Drinks> tempList = new List<Drinks>();
+        //            foreach (var row in selectedDrinks)
+        //            {
+        //                tempList.Add(row);
+        //            }
+
+        //            foreach (var item in tempList)
+        //            {
+        //                var query = from s in db.Drinks
+        //                            where s.Id == item.Id
+        //                            select s;
+
+        //                int selectedDrinkCount = query.Count();
+        //                foreach (Drinks q in query)
+        //                {
+        //                    int internalSelectedDrinksCount = 0;
+        //                    selectedDrinkCount = selectedDrinkCount + internalSelectedDrinksCount;
+        //                    if (q.Stock - selectedDrinkCount >= 0 )
+        //                    {
+        //                        enoughStock = true;
+        //                        internalSelectedDrinksCount++;
+
+        //                    }
+        //                    else if (q.Stock == null)
+        //                    {
+        //                        continue;
+        //                    }
+        //                    else if (q.Stock - selectedDrinkCount < 0)
+        //                    {
+        //                        enoughStock = false;
+        //                        break;
+        //                    }
+        //                }
+
+        //            }
+        //        }
+
+        //    }
+        //    if (enoughStock == false)
+        //    {
+        //        MessageBox.Show("Not enough stock for this transaction");
+        //    }
+        //}
+        #endregion oldStockMethod
+
 
         //cashes off the cashier if cost < €20 || throws an error message if cost > €20 || throws an error if nothing was selected before the button was clicked
         //calls the method that will update the stock of items that were sold
         private void TwentyEuroCashButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckStock();
+            CheckStock2();
             decimal cost = CalculateTotal();
             UpdateStock();
             if (cost <= 20 && cost > 0)
@@ -371,7 +409,7 @@ namespace last_time
         //calls the method that will update the stock of items that were sold
         private void FiftyEuroCashButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckStock();
+            CheckStock2();
             decimal cost = CalculateTotal();
             UpdateStock();
             if (cost <= 50 && cost > 0)
@@ -395,7 +433,7 @@ namespace last_time
         //calls the method that will update the stock of items that were sold
         private void CashButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckStock();
+            CheckStock2();
             decimal cost = CalculateTotal();
             UpdateStock();
             selectedDrinks.Clear();
@@ -646,12 +684,14 @@ namespace last_time
 
         }
 
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        public void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             bool nameMatch = false;
             bool passwordMatch = false;
-            nameMatch = CheckUsers(nameMatch);
-            passwordMatch = CheckPassword(passwordMatch);
+            string username = tbxUser.Text;
+            string password = tbxPassword.Text;
+            nameMatch = CheckUsers(nameMatch, username);
+            passwordMatch = CheckPassword(passwordMatch, password);
 
             if ((passwordMatch == true) && (nameMatch == true))
             {
@@ -666,9 +706,8 @@ namespace last_time
             }
         }
 
-        private bool CheckUsers(bool nameMatch)
+        public bool CheckUsers(bool nameMatch, string username)
         {
-            string username = tbxUser.Text;
 
             var users = from u in db.Users1
                         select u.Name;
@@ -690,9 +729,8 @@ namespace last_time
             return nameMatch;
         }
 
-        private bool CheckPassword(bool passwordMatch)
+        public bool CheckPassword(bool passwordMatch, string password)
         {
-            string password = tbxPassword.Text;
 
             var passwords = from u in db.Users1
                             select u.Password;
@@ -805,5 +843,36 @@ namespace last_time
                 lbxSelector1.SelectedItem = null;
             }
         }
+
+        //writes to a json file
+        public void btnPrintSales_Click(object sender, RoutedEventArgs e)
+        {
+            string data = JsonConvert.SerializeObject(GetSales(), Formatting.Indented);
+
+            using (StreamWriter sw = new StreamWriter("C:/Users/Johnathon/source/repos/last_time.json"))
+            {
+                sw.Write(data);
+                sw.Close();
+            }
+        }
+
+        //gets a list of sales
+        public static List<Sales> GetSales()
+        {
+            Random rand = new Random();
+            List<Sales> sales = new List<Sales>();
+
+            for (int i = 0; i < 14; i++)
+            {
+                DateTime date = DateTime.Now.AddDays(-i);
+                decimal salesTotal = Convert.ToDecimal(rand.Next(100));
+                Sales newSale = new Sales();
+                newSale.Date = date;
+                newSale.SalesTotal = salesTotal;
+                sales.Add(newSale);
+            }
+            return sales;
+        }
     }
 }
+
