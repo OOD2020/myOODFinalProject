@@ -3,6 +3,7 @@
  * Description : Project Description for Object Orienatated Development End of Year Final Project
  
  Dear Reader, 
+ 
  This project was for my Second Year - Semester Two - Object Orienatated Development- End of Year - Final Project
  
  This project uses the .NET Framework to create an XAML interface that includes images which are hosted on S3 buckets using AWS.
