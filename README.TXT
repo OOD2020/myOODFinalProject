@@ -14,4 +14,4 @@
  
  The project was created using a Database - First approach
 
-***NOTE** : I have included an MP4 file called "ABarTill.mp4" that viewers can download and watch to see the bar til fucntioning
+***NOTE** : I have included an MP4 file called "ABarTill.mp4" that viewers can download and watch to see the bar till fucntioning
