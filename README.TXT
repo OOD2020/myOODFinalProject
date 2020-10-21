@@ -13,3 +13,5 @@
  The project connects to a database which contains all the details of all drinks used in the till system. 
  
  The project was created using a Database - First approach
+
+***NOTE : I have included an 
