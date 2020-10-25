@@ -1,6 +1,6 @@
  * Author: Johnathon Mc Grory
  * Date : 1st May 2020
- * Description : Project Description for Object Orienatated Development End of Year Final Project
+ * Description : Project Description for Object Oriented Development End of Year Final Project
  
  Dear Reader, 
  
@@ -12,6 +12,6 @@
  
  The project connects to a database which contains all the details of all drinks used in the till system. 
  
- The project was created using a Database - First approach
+ The project was created using a Database - First approach.
 
 ***NOTE** : I have included an MP4 file called "ABarTill.mp4" that viewers can download and watch to see the bar till fucntioning
